@@ -14,9 +14,9 @@ loop do
 end
 
 loop do
-    puts 'left/right?'
+    puts 'Left/Right?'
     direction = gets.chomp
-    break if (direction =='left' || direction =='right')
+    break if (direction =='Left' || direction =='Right')
 end
 
 loop do
@@ -25,16 +25,13 @@ loop do
     break if shift.to_i != 0
 end
 
-puts "Encrypt:'" + text + "', with a " + direction + " shift of " + shift 
+puts "=>Encrypting: " + text + "   =>Direction: " + direction + "   =>Number of shift: " + shift 
 
-if direction == 'left'
+if direction == 'Left'
     qtyShift = shift.to_i*-1
-    puts qtyShift
 else 
     qtyShift = shift.to_i
-    puts qtyShift
 end
-
 
 text.each_byte do |byte|
 
@@ -42,10 +39,7 @@ text.each_byte do |byte|
         letterCase = 'upper'
     elsif byte.between?(97, 122) 
         letterCase = 'lower'
-    else
-        letterCase = 'nonChar'
     end
-
 
     if byte.between?(65, 90)  || byte.between?(97, 122)
         byte +=  qtyShift
@@ -67,4 +61,4 @@ text.each_byte do |byte|
         result += byte.chr
     end
 end
-puts result
+puts '=>Result: '+result
